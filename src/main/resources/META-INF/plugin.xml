@@ -1,0 +1,53 @@
+<idea-plugin>
+    <id>jzy.taining.plugins.JSpark</id>
+    <name>JSpark</name>
+    <vendor email="jonas.jzy@gmail.com">ZuYun</vendor>
+    <vendor>一键生成多个相关文件</vendor>
+
+    <description><![CDATA[
+    This sample plugin does the following things ...
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements -->
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+<!--    <depends>com.intellij.modules.java</depends>-->
+    <!--    <depends>com.intellij.modules.androidstudio</depends>-->
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>org.jetbrains.android</depends>
+
+<!--    <extensions defaultExtensionNs="com.intellij">-->
+<!--        <applicationService serviceImplementation="jzy.taining.plugins.jspark.services.MyApplicationService"/>-->
+<!--        <projectService serviceImplementation="jzy.taining.plugins.jspark.services.MyProjectService"/>-->
+<!--    </extensions>-->
+
+<!--    <applicationListeners>-->
+<!--        <listener class="jzy.taining.plugins.jspark.listeners.MyProjectManagerListener"-->
+<!--                  topic="com.intellij.openapi.project.ProjectManagerListener"/>-->
+<!--    </applicationListeners>-->
+    <actions>
+        <action class="jzy.taining.plugins.jspark.actions.BasicTempAction" description="基类UI实现模板" icon="/modules/sourceRoot.svg"
+                id="jzy.jspark.basicui" text="BasicUI">
+            <add-to-group anchor="first" group-id="NewGroup"/>
+        </action>
+        <action class="jzy.taining.plugins.jspark.actions.DartTempAction" description="基类UI实现模板" icon="/modules/sourceRoot.svg"
+                id="jzy.jspark.sparkui" text="SparkUI">
+            <add-to-group anchor="first" group-id="NewGroup"/>
+        </action>
+        <action class="jzy.taining.plugins.jspark.actions.ConvertAllToWebpAction" description="ConvertAllToWebpAction"
+                id="jspark.june.webp" text="ConvertAllToWebpAction">
+            <add-to-group anchor="first" group-id="NewGroup"/>
+        </action>
+        <action class="jzy.taining.plugins.jspark.actions.ProjectExport" description="ProjectExport"
+                id="taining.jzy.export.project" text="PExport">
+            <keyboard-shortcut first-keystroke="alt shift P" keymap="$default" second-keystroke="E"/>
+            <keyboard-shortcut first-keystroke="control alt P" keymap="Mac OS X" second-keystroke="E"/>
+            <add-to-group anchor="last" group-id="FileExportGroup"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="jzy.taining.plugins.jspark.templates.SparkTemplatesProvider"/>
+    </extensions>
+
+</idea-plugin>

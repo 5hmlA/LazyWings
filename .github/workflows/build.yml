@@ -1,0 +1,42 @@
+name: build
+
+#https://docs.github.com/zh/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow
+on: [ push, pull_request ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+#    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 🐼 Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: 🛠️ Build Plugin
+        run: |
+          echo 🐛 如果遇到Error: Could not find or load main class org.gradle.wrapper.GradleWrapperMain
+          echo 💊 那么说明是因为gradle目录,gradlew文件没同步到github导致的,检查下是否此目录下有文件没上传
+          chmod +x gradlew
+          ./gradlew buildPlugin
+      - run: echo "💡build succeed. 🎉🎉🎉"
+
+      #https://github.blog/news-insights/product-news/get-started-with-v4-of-github-actions-artifacts/
+      - name: 📸 Upload plugin
+        uses: actions/upload-artifact@v4
+        with:
+          name: spark-plugin
+          path: build/libs/*[0-9].jar
+          override: true
+
+      # Upload artifact as a release asset
+#      - name: Upload Release Asset
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+#        run: gh release upload test ./build/libs/*.jar
