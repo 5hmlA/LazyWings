@@ -1,8 +1,8 @@
 <idea-plugin>
-    <id>jzy.taining.plugins.JSpark</id>
-    <name>JSpark</name>
-    <vendor email="jonas.jzy@gmail.com">ZuYun</vendor>
-    <vendor>一键生成多个相关文件</vendor>
+    <id>wings.lazy</id>
+    <name>LazyWings</name>
+    <vendor email="jonas.wings@gmail.com">ZuYun</vendor>
+    <vendor>Work smart, not hard</vendor>
 
     <description><![CDATA[
     This sample plugin does the following things ...
@@ -17,29 +17,21 @@
     <depends>org.jetbrains.android</depends>
 
 <!--    <extensions defaultExtensionNs="com.intellij">-->
-<!--        <applicationService serviceImplementation="jzy.taining.plugins.jspark.services.MyApplicationService"/>-->
-<!--        <projectService serviceImplementation="jzy.taining.plugins.jspark.services.MyProjectService"/>-->
+<!--        <applicationService serviceImplementation="wings.lazy.plugins.jspark.services.MyApplicationService"/>-->
+<!--        <projectService serviceImplementation="wings.lazy.plugins.jspark.services.MyProjectService"/>-->
 <!--    </extensions>-->
 
 <!--    <applicationListeners>-->
-<!--        <listener class="jzy.taining.plugins.jspark.listeners.MyProjectManagerListener"-->
+<!--        <listener class="wings.lazy.plugins.jspark.listeners.MyProjectManagerListener"-->
 <!--                  topic="com.intellij.openapi.project.ProjectManagerListener"/>-->
 <!--    </applicationListeners>-->
     <actions>
-        <action class="jzy.taining.plugins.jspark.actions.BasicTempAction" description="基类UI实现模板" icon="/modules/sourceRoot.svg"
-                id="jzy.jspark.basicui" text="BasicUI">
+        <action class="wings.lazy.plugins.actions.ConvertAllToWebpAction" description="ConvertAllToWebpAction"
+                id="wings.lazy.webp" text="ConvertAllToWebpAction">
             <add-to-group anchor="first" group-id="NewGroup"/>
         </action>
-        <action class="jzy.taining.plugins.jspark.actions.DartTempAction" description="基类UI实现模板" icon="/modules/sourceRoot.svg"
-                id="jzy.jspark.sparkui" text="SparkUI">
-            <add-to-group anchor="first" group-id="NewGroup"/>
-        </action>
-        <action class="jzy.taining.plugins.jspark.actions.ConvertAllToWebpAction" description="ConvertAllToWebpAction"
-                id="jspark.june.webp" text="ConvertAllToWebpAction">
-            <add-to-group anchor="first" group-id="NewGroup"/>
-        </action>
-        <action class="jzy.taining.plugins.jspark.actions.ProjectExport" description="ProjectExport"
-                id="taining.jzy.export.project" text="PExport">
+        <action class="wings.lazy.plugins.actions.ProjectExport" description="ProjectExport"
+                id="wings.lazy.export.project" text="PExport">
             <keyboard-shortcut first-keystroke="alt shift P" keymap="$default" second-keystroke="E"/>
             <keyboard-shortcut first-keystroke="control alt P" keymap="Mac OS X" second-keystroke="E"/>
             <add-to-group anchor="last" group-id="FileExportGroup"/>
@@ -47,7 +39,7 @@
     </actions>
 
     <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
-        <wizardTemplateProvider implementation="jzy.taining.plugins.jspark.templates.SparkTemplatesProvider"/>
+        <wizardTemplateProvider implementation="wings.lazy.plugins.templates.GeneTemplatesProvider"/>
     </extensions>
 
 </idea-plugin>

@@ -5,8 +5,8 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.impl.BackgroundableProcessIndicator;
 import com.intellij.openapi.project.Project;
-import jzy.taining.plugins.jspark.log.EventLogger;
 import org.jetbrains.annotations.NotNull;
+import wings.lazy.plugins.log.EventLogger;
 
 import java.awt.*;
 import java.io.File;
