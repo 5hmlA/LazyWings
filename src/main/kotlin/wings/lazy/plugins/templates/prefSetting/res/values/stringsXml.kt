@@ -5,7 +5,7 @@ fun stringsXml(
     title: String,
     titleResName: String) =
     """<resources>
-    <!-- Activity Title -->
+    <!-- $title Ò³Ãæ±êÌâ -->
     <string name="$titleResName">${title}</string>
 </resources>
 """

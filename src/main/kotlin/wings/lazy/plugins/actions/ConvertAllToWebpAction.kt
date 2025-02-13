@@ -9,9 +9,9 @@ import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiElementVisitor
 import com.intellij.psi.PsiFile
-import wings.lazy.plugins.jspark.features.templates.data.Environment
-import wings.lazy.plugins.jspark.features.templates.wizard.AndroidScopeProcessor
-import wings.lazy.plugins.jspark.features.templates.wizard.CheckerImpl
+import wings.lazy.plugins.wizard.AndroidScopeProcessor
+import wings.lazy.plugins.wizard.CheckerImpl
+import wings.lazy.plugins.wizard.Environment
 
 class ConvertAllToWebpAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
