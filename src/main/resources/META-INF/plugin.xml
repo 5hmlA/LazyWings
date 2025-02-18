@@ -36,6 +36,12 @@
             <keyboard-shortcut first-keystroke="control alt P" keymap="Mac OS X" second-keystroke="E"/>
             <add-to-group anchor="last" group-id="FileExportGroup"/>
         </action>
+        <action class="wings.lazy.plugins.actions.InsertJsonClass" description="Convert a json string data into kotlin data class code"
+                id="wings.lazy.plugins.insertJson"
+                text="To JSON Class">
+            <add-to-group anchor="last" group-id="GenerateGroup"/>
+            <keyboard-shortcut first-keystroke="alt k" keymap="$default"/>
+        </action>
     </actions>
 
     <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">

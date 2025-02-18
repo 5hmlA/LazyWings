@@ -1,6 +1,12 @@
 # IntelliJ Platform Plugin
 
 
+<!-- Plugin description -->
+
+**加速开发插件**
+
+<!-- Plugin description end -->
+
 ### TODO
 >[rainbow-brackets](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/20223/src/main/kotlin/com/github/izhangzhihao/rainbow/brackets/lite/visitor/RainbowHighlightVisitor.kt)
 
