@@ -7,6 +7,7 @@ fun prefSettingsUI(
     activityName: String,
     fragmentName: String,
     viewModelName: String,
+    dtoName: String,
     titleRes: String
 ) = """
         
@@ -14,19 +15,19 @@ package $packageName
 
 import $namespace.R
 import androidx.preference.PreferenceScreen
-import com.gene.demo.basic.ui.BasicPreferenceFragment
-import com.gene.demo.basic.ui.BasicStateWithDeviceActivity
+import com.gene.basic.ui.BasicPreferenceFragment
+import com.gene.basic.ui.BasicStateActivity
 
-class $activityName: BasicStateWithDeviceActivity<$viewModelName>() {
+class $activityName: BasicStateActivity<$viewModelName>() {
 
     override fun title() = $titleRes
 
-    override fun showSucceedFragmentWithToolbar() = $fragmentName()
+    override fun showSucceedFragment() = $fragmentName()
 }
 
 class $fragmentName: BasicPreferenceFragment<$viewModelName>() {
     
-    override fun PreferenceScreen.showScreen() {
+    override fun PreferenceScreen.showScreen(data :$dtoName) {
         TODO("Not yet implemented")
     }
     

@@ -8,7 +8,7 @@ fun prefSettingsDTO(
         
 package ${packageName}.dto
 
-/* $title ҳ��ʹ�� */
+/* $title 页面使用的数据模型 */
 data class $business()
 
 

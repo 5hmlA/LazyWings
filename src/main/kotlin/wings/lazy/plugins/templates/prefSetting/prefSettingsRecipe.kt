@@ -23,6 +23,7 @@ fun RecipeExecutor.prefSettingsRecipe(
     business: String,
     beanGenerate: Boolean,
     dto: String,
+    isList: Boolean,
     packageName: String,
     kotlinSrcDir: Boolean,
 ) {
@@ -51,7 +52,16 @@ fun RecipeExecutor.prefSettingsRecipe(
 
     //生成源码
     val uiSrcOut = srcOut.resolve("${business}UI.kt")
-    save(prefSettingsUI(projectData.applicationPackage ?: packageName, packageName, activityClass, fragmentClass, viewModelClass, titleRes), uiSrcOut)
+    save(
+        prefSettingsUI(
+            projectData.applicationPackage ?: packageName,
+            packageName,
+            activityClass,
+            fragmentClass,
+            viewModelClass,
+            titleRes
+        ), uiSrcOut
+    )
     open(uiSrcOut)
     if (beanGenerate && !dto.contains("Any")) {
         val split = dto.split(".")
@@ -64,7 +74,13 @@ fun RecipeExecutor.prefSettingsRecipe(
             open(dtoSrcOut)
 
             val viewModelSrcOut = srcOut.resolve("${viewModelClass}.kt")
-            save(prefSettingsViewModel(packageName, viewModelClass, dto), viewModelSrcOut)
+            save(
+                prefSettingsViewModel(
+                    packageName,
+                    viewModelClass, dto,
+                    true, isList
+                ), viewModelSrcOut
+            )
             open(viewModelSrcOut)
         } else {
             val dtoSrcOut = srcOut.resolve("dto/${dto}.kt")
@@ -72,12 +88,20 @@ fun RecipeExecutor.prefSettingsRecipe(
             open(dtoSrcOut)
 
             val viewModelSrcOut = srcOut.resolve("${viewModelClass}.kt")
-            save(prefSettingsViewModel(packageName, viewModelClass, dto), viewModelSrcOut)
+            save(prefSettingsViewModel(
+                packageName,
+                viewModelClass, dto,
+                true, isList
+            ), viewModelSrcOut)
             open(viewModelSrcOut)
         }
     } else {
         val viewModelSrcOut = srcOut.resolve("${viewModelClass}.kt")
-        save(prefSettingsViewModel(packageName, viewModelClass, dto), viewModelSrcOut)
+        save(prefSettingsViewModel(
+            packageName,
+            viewModelClass, dto,
+            false, isList
+        ), viewModelSrcOut)
         open(viewModelSrcOut)
     }
 

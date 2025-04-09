@@ -36,6 +36,11 @@ val prefSettingsTemplate
             default = true
             help = "如果为true,会自动生成Bean文件"
         }
+        val isListDto = booleanParameter {
+            name = "页面是否需要List"
+            default = true
+            help = "如果为true,使用List"
+        }
 
         val dto = stringParameter {
             name = "DTO"
@@ -64,6 +69,7 @@ val prefSettingsTemplate
             TextFieldWidget(business),
             TextFieldWidget(title),
             TextFieldWidget(dto),
+            CheckBoxWidget(isListDto),
             CheckBoxWidget(dtoGenerate),
             CheckBoxWidget(businessPackage),
             PackageNameWidget(packageName),
@@ -86,7 +92,12 @@ val prefSettingsTemplate
             } else {
                 packageName.value
             }
-            prefSettingsRecipe(data as ModuleTemplateData, title.value, business.value, dtoGenerate.value, dtoValue, packageNameValue, kotlinSrcDir.value)
+            prefSettingsRecipe(
+                data as ModuleTemplateData,
+                title.value, business.value,
+                dtoGenerate.value, dtoValue, isListDto.value,
+                packageNameValue, kotlinSrcDir.value
+            )
         }
 
     }

@@ -22,20 +22,26 @@ class $viewModelName(stateHandle: SavedStateHandle): BasicPrefViewModel<Any>(sta
 fun prefSettingsViewModel(
     packageName: String,
     viewModelName: String,
-    dtoName: String
-) = """
+    dtoName: String,
+    generateDTO: Boolean,
+    isList: Boolean,
+): String {
+    val dtoNameImport = if (generateDTO) "import $packageName.dto.$dtoName" else ""
+    val fanxing = if (isList) "List<$dtoName>" else dtoName
+    return """
 package $packageName
 
-import $packageName.dto.$dtoName
+$dtoNameImport
 import androidx.lifecycle.SavedStateHandle
-import com.gene.demo.basic.BasicPrefViewModel
+import com.gene.basic.BasicPrefViewModel
 
 
-class $viewModelName(stateHandle: SavedStateHandle): BasicPrefViewModel<$dtoName>(stateHandle) {
+class $viewModelName(stateHandle: SavedStateHandle): BasicPrefViewModel<$fanxing>(stateHandle) {
     
-    override suspend fun doRequest(stateHandle: SavedStateHandle): ${dtoName}? {
+    override suspend fun doRequest(stateHandle: SavedStateHandle): ${fanxing}? {
         TODO("Not yet implemented")
     }
 }
 
 """
+}

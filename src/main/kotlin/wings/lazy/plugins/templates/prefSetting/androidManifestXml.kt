@@ -10,7 +10,7 @@ fun androidManifestXml(
         <activity android:name="${packageName}.${activityName}"
             android:launchMode="singleTop"
             android:screenOrientation="locked" 
-            android:exported="true" />
+            android:exported="false" />
     </application>
 
 </manifest>
