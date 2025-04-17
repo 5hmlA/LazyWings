@@ -41,7 +41,7 @@ fun currentDate(): String {
 
 }
 
-version = currentDate()
+val dateVersion = currentDate()
 
 // Set the JVM language level used to build the project.
 kotlin {
@@ -94,7 +94,8 @@ dependencies {
 intellijPlatform {
 
     pluginConfiguration {
-        version = providers.gradleProperty("pluginVersion")
+//        version = providers.gradleProperty("pluginVersion")
+        version = dateVersion
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
         description = providers.fileContents(layout.projectDirectory.file("README.md")).asText.map {
