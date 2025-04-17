@@ -7,10 +7,10 @@ fun prefSettingsViewModelAny(
 package $packageName
 
 import androidx.lifecycle.SavedStateHandle
-import com.gene.demo.basic.BasicPrefViewModel
+import osp.spark.view.ui.StateViewModel
 
 
-class $viewModelName(stateHandle: SavedStateHandle): BasicPrefViewModel<Any>(stateHandle) {
+class $viewModelName(stateHandle: SavedStateHandle): StateViewModel<Any>(stateHandle) {
     
     override suspend fun doRequest(stateHandle: SavedStateHandle): Any? {
         TODO("Not yet implemented")
@@ -33,10 +33,10 @@ package $packageName
 
 $dtoNameImport
 import androidx.lifecycle.SavedStateHandle
-import com.gene.basic.BasicPrefViewModel
+import osp.spark.view.ui.StateViewModel
 
 
-class $viewModelName(stateHandle: SavedStateHandle): BasicPrefViewModel<$fanxing>(stateHandle) {
+class $viewModelName(stateHandle: SavedStateHandle): StateViewModel<$fanxing>(stateHandle) {
     
     override suspend fun doRequest(stateHandle: SavedStateHandle): ${fanxing}? {
         TODO("Not yet implemented")

@@ -15,19 +15,19 @@ package $packageName
 
 import $namespace.R
 import androidx.preference.PreferenceScreen
-import com.gene.basic.ui.BasicPreferenceFragment
-import com.gene.basic.ui.BasicStateActivity
+import osp.spark.view.ui.ViewDslFragment
+import osp.spark.view.ui.StateActivity
 
-class $activityName: BasicStateActivity<$viewModelName>() {
+class $activityName: StateActivity<$viewModelName>() {
 
     override fun title() = $titleRes
 
-    override fun showSucceedFragment() = $fragmentName()
+    override fun showSuccessFragment() = $fragmentName()
 }
 
-class $fragmentName: BasicPreferenceFragment<$viewModelName>() {
+class $fragmentName: ViewDslFragment<$viewModelName>() {
     
-    override fun PreferenceScreen.showScreen(data :$dtoName) {
+    override fun LinearLayout.onShowContent(data :$dtoName) {
         TODO("Not yet implemented")
     }
     
