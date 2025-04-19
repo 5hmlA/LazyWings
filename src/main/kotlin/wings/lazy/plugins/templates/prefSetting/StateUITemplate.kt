@@ -6,10 +6,10 @@ import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import com.android.tools.idea.wizard.template.impl.defaultPackageNameParameter
 import java.io.File
 
-val prefSettingsTemplate
+val stateUITemplate
     get() = template {
-        name = "PrefSettings Activity"
-        description = "一键生成卡片风格设置页面"
+        name = "StateUI Activity"
+        description = "一键生成多状态页面"
         minApi = MIN_API
         //定义模版显示在哪
         category = Category.UiComponent
@@ -99,5 +99,4 @@ val prefSettingsTemplate
                 packageNameValue, kotlinSrcDir.value
             )
         }
-
     }
