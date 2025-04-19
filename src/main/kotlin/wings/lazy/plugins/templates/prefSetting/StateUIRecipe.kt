@@ -52,25 +52,41 @@ fun RecipeExecutor.prefSettingsRecipe(
 
     //生成源码
     val uiSrcOut = srcOut.resolve("${business}UI.kt")
-    save(
-        prefSettingsUI(
-            projectData.applicationPackage ?: packageName,
-            packageName,
-            activityClass,
-            fragmentClass,
-            viewModelClass,
-            titleRes
-        ), uiSrcOut
-    )
     open(uiSrcOut)
     if (beanGenerate && !dto.contains("Any")) {
         val split = dto.split(".")
         if (split.size > 1) {
             //dtoBusiness.Order 把所有dto添加到一个文件下
             val dtoSrcOut = srcOut.resolve("dto/${split.first()}.kt")
-            val dto = split.last()
-            append(prefSettingsDTO(uiPage, packageName, dto), dtoSrcOut)
+            val dtoName = split.last()
+            append(prefSettingsDTO(uiPage, packageName, dtoName), dtoSrcOut)
             //append 可以创建可以追加
+            open(dtoSrcOut)
+
+            val viewModelSrcOut = srcOut.resolve("${viewModelClass}.kt")
+            save(
+                prefSettingsViewModel(
+                    packageName,
+                    viewModelClass, dtoName,
+                    true, isList
+                ), viewModelSrcOut
+            )
+
+            save(
+                prefSettingsUI(
+                    projectData.applicationPackage ?: packageName,
+                    packageName,
+                    activityClass,
+                    fragmentClass,
+                    viewModelClass,
+                    dtoName, titleRes
+                ), uiSrcOut
+            )
+
+            open(viewModelSrcOut)
+        } else {
+            val dtoSrcOut = srcOut.resolve("dto/${dto}.kt")
+            save(prefSettingsDTO(uiPage, packageName, dto), dtoSrcOut)
             open(dtoSrcOut)
 
             val viewModelSrcOut = srcOut.resolve("${viewModelClass}.kt")
@@ -81,27 +97,43 @@ fun RecipeExecutor.prefSettingsRecipe(
                     true, isList
                 ), viewModelSrcOut
             )
-            open(viewModelSrcOut)
-        } else {
-            val dtoSrcOut = srcOut.resolve("dto/${dto}.kt")
-            save(prefSettingsDTO(uiPage, packageName, dto), dtoSrcOut)
-            open(dtoSrcOut)
 
-            val viewModelSrcOut = srcOut.resolve("${viewModelClass}.kt")
-            save(prefSettingsViewModel(
-                packageName,
-                viewModelClass, dto,
-                true, isList
-            ), viewModelSrcOut)
+            save(
+                prefSettingsUI(
+                    projectData.applicationPackage ?: packageName,
+                    packageName,
+                    activityClass,
+                    fragmentClass,
+                    viewModelClass,
+                    dto,
+                    titleRes
+                ), uiSrcOut
+            )
+
             open(viewModelSrcOut)
         }
     } else {
         val viewModelSrcOut = srcOut.resolve("${viewModelClass}.kt")
-        save(prefSettingsViewModel(
-            packageName,
-            viewModelClass, dto,
-            false, isList
-        ), viewModelSrcOut)
+        save(
+            prefSettingsViewModel(
+                packageName,
+                viewModelClass, dto,
+                false, isList
+            ), viewModelSrcOut
+        )
+
+        save(
+            prefSettingsUI(
+                projectData.applicationPackage ?: packageName,
+                packageName,
+                activityClass,
+                fragmentClass,
+                viewModelClass,
+                dto,
+                titleRes
+            ), uiSrcOut
+        )
+
         open(viewModelSrcOut)
     }
 
