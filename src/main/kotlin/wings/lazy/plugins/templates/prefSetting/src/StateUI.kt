@@ -18,7 +18,7 @@ import androidx.preference.PreferenceScreen
 import osp.spark.view.ui.ViewDslFragment
 import osp.spark.view.ui.StateActivity
 
-class $activityName: StateActivity<$viewModelName>() {
+class $activityName: StateActivity<$dtoName, $viewModelName>() {
 
     override fun title() = $titleRes
     
